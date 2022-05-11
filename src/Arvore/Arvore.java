@@ -1,7 +1,5 @@
 package Arvore;
 
-import javax.swing.Painter;
-
 public class Arvore<TIPO extends Comparable> {
     
     private Elemento<TIPO> raiz;
