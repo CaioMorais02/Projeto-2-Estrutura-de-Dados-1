@@ -16,8 +16,8 @@ public class Arvore<TIPO extends Comparable> {
         this.raiz = raiz;
     }
 
-    public void adicionar(TIPO valor){
-        Elemento<TIPO> novoElemento = new Elemento<TIPO>(valor);
+    public void adicionar(TIPO num, int valor){
+        Elemento<TIPO> novoElemento = new Elemento<TIPO>(num, valor);
 
         if (raiz == null){ //Insere um valor caso a árvore esteja vazia
             this.raiz = novoElemento;
@@ -28,7 +28,7 @@ public class Arvore<TIPO extends Comparable> {
 
             while(true){
 
-                if (novoElemento.getValor().compareTo(atual.getValor()) == -1){ //Se o valor do novo nó for menor que o atual, irá para a esquerda
+                if (novoElemento.getNum().compareTo(atual.getNum()) == -1){ //Se o valor do novo nó for menor que o atual, irá para a esquerda
                     
                     if (atual.getEsquerda() != null){ //Condição para que a variável atual percorra a árvore mais a esquerda
                         atual = atual.getEsquerda();
@@ -63,14 +63,14 @@ public class Arvore<TIPO extends Comparable> {
     public void emOrdem(Elemento<TIPO> atual){
         if (atual != null){
             emOrdem(atual.getEsquerda());
-            System.out.print(atual.getValor() + " ");
+            System.out.println("Número: " + atual.getNum() + " Preço: " + atual.getValor());
             emOrdem(atual.getDireita());
         }
     }
 
     public void preOrdem(Elemento<TIPO> atual){
         if (atual != null){
-            System.out.print(atual.getValor() + " ");
+            System.out.println("Número: " + atual.getNum() + " Preço: " + atual.getValor());
             preOrdem(atual.getEsquerda());
             preOrdem(atual.getDireita());
         }
@@ -80,22 +80,22 @@ public class Arvore<TIPO extends Comparable> {
         if (atual != null){
             posOrdem(atual.getEsquerda());
             posOrdem(atual.getDireita());
-            System.out.print(atual.getValor() + " ");
+            System.out.println("Número: " + atual.getNum() + " Preço: " + atual.getValor());
         }
     }
 
-    public boolean remover(TIPO valor){
+    public boolean remover(TIPO num){
         //buscar o elemento na árvore
         Elemento<TIPO> atual = this.raiz;
         Elemento<TIPO> paiAtual = null;
 
         while(atual != null){
 
-            if (atual.getValor().equals(valor)){
+            if (atual.getNum().equals(num)){
                 break;                
             }
             
-            else if (valor.compareTo(atual.getValor()) == -1){ //valor procurado é menor que o atual 
+            else if (num.compareTo(atual.getNum()) == -1){ //valor procurado é menor que o atual 
                 paiAtual = atual;
                 atual = atual.getEsquerda();
             }
@@ -124,7 +124,7 @@ public class Arvore<TIPO extends Comparable> {
 
                 if (paiAtual != null){
 
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
+                    if (atual.getNum().compareTo(paiAtual.getNum()) == -1){ //atual < paiAtual
                         paiAtual.setEsquerda(substituto);
                     }
                     
@@ -142,7 +142,7 @@ public class Arvore<TIPO extends Comparable> {
                 }
                 
                 //removeu o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){ //substituto < paiSubstituto
+                if (substituto.getNum().compareTo(paiSubstituto.getNum()) == -1){ //substituto < paiSubstituto
                     paiSubstituto.setEsquerda(null);
                 }
                 
@@ -164,7 +164,7 @@ public class Arvore<TIPO extends Comparable> {
 
                 if (paiAtual != null){
 
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
+                    if (atual.getNum().compareTo(paiAtual.getNum()) == -1){ //atual < paiAtual
                         paiAtual.setEsquerda(substituto);
                     }
                     
@@ -179,7 +179,7 @@ public class Arvore<TIPO extends Comparable> {
                 }
                 
                 //removeu o elemento da árvore
-                if (substituto.getValor().compareTo(paiSubstituto.getValor()) == -1){ //substituto < paiSubstituto
+                if (substituto.getNum().compareTo(paiSubstituto.getNum()) == -1){ //substituto < paiSubstituto
                     paiSubstituto.setEsquerda(null);
                 }
                 
@@ -193,7 +193,7 @@ public class Arvore<TIPO extends Comparable> {
 
                 if (paiAtual != null){
 
-                    if (atual.getValor().compareTo(paiAtual.getValor()) == -1){ //atual < paiAtual
+                    if (atual.getNum().compareTo(paiAtual.getNum()) == -1){ //atual < paiAtual
                         paiAtual.setEsquerda(null);
                     }
                     

@@ -2,21 +2,31 @@ package Arvore;
 
 public class Elemento<TIPO> {
     
-    private TIPO valor;
+    private TIPO num;
+    private int valor;
     private Elemento<TIPO> esquerda;
     private Elemento<TIPO> direita;
 
-    public Elemento(TIPO valor) {
+    public Elemento(TIPO num, int valor) {
+        this.num = num;
         this.valor = valor;
         this.esquerda = null;
         this.direita = null;
     }
 
-    public TIPO getValor() {
+    public TIPO getNum() {
+        return num;
+    }
+
+    public void setNum(TIPO num) {
+        this.num = num;
+    }
+
+    public int getValor() {
         return valor;
     }
 
-    public void setValor(TIPO valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
 
