@@ -4,12 +4,14 @@ public class Elemento<TIPO> {
     
     private TIPO num;
     private int valor;
+    private boolean ocupado;
     private Elemento<TIPO> esquerda;
     private Elemento<TIPO> direita;
 
     public Elemento(TIPO num, int valor) {
         this.num = num;
         this.valor = valor;
+        this.ocupado = false;
         this.esquerda = null;
         this.direita = null;
     }
@@ -44,6 +46,14 @@ public class Elemento<TIPO> {
 
     public void setDireita(Elemento<TIPO> direita) {
         this.direita = direita;
+    }
+
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
     }
 
 }

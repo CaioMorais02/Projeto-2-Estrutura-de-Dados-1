@@ -15,49 +15,14 @@ public class AppArvore {
         a1.adicionar(13, 250);
         a1.adicionar(20, 780);
 
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(5);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(8);
+        a1.ocuparQuarto(10);
+        a1.ocuparQuarto(18);
+        a1.ocuparQuarto(5);
+        a1.ocuparQuarto(7);
+        a1.ocuparQuarto(9);
 
         System.out.println("\nEm ordem:");
         a1.emOrdem(a1.getRaiz());
-
-        a1.remover(9);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(13);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(7);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(18);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(20);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
-        a1.remover(10);
-
-        System.out.println("\nEm ordem:");
-        a1.emOrdem(a1.getRaiz());
-
 
     }
 }

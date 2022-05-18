@@ -63,7 +63,7 @@ public class Arvore<TIPO extends Comparable> {
     public void emOrdem(Elemento<TIPO> atual){
         if (atual != null){
             emOrdem(atual.getEsquerda());
-            System.out.println("Número: " + atual.getNum() + " Preço: " + atual.getValor());
+            System.out.println("Número: " + atual.getNum() + " Preço: " + atual.getValor() + " Ocupado: " + atual.isOcupado());
             emOrdem(atual.getDireita());
         }
     }
@@ -84,136 +84,24 @@ public class Arvore<TIPO extends Comparable> {
         }
     }
 
-    public boolean remover(TIPO num){
-        //buscar o elemento na árvore
+    public void ocuparQuarto(TIPO num){
         Elemento<TIPO> atual = this.raiz;
-        Elemento<TIPO> paiAtual = null;
 
-        while(atual != null){
-
+        while (true){
             if (atual.getNum().equals(num)){
-                break;                
+                atual.setOcupado(true);
+                break;
             }
-            
-            else if (num.compareTo(atual.getNum()) == -1){ //valor procurado é menor que o atual 
-                paiAtual = atual;
+
+            else if (num.compareTo(atual.getNum()) == -1){ //valor procurado é menor que o atual
                 atual = atual.getEsquerda();
             }
-            
-            else{
-                paiAtual = atual;
+
+            else {
                 atual = atual.getDireita();
             }
         }
 
-        //verifica se existe o elemento
-        if (atual != null){
-            
-            //elemento tem 2 filhos ou elemento tem somente filho à direita
-            if (atual.getDireita() != null){
-                
-                Elemento<TIPO> substituto = atual.getDireita();
-                Elemento<TIPO> paiSubstituto = atual;
-
-                while(substituto.getEsquerda() != null){
-                    paiSubstituto = substituto;
-                    substituto = substituto.getEsquerda();
-                }
-
-                substituto.setEsquerda(atual.getEsquerda());
-
-                if (paiAtual != null){
-
-                    if (atual.getNum().compareTo(paiAtual.getNum()) == -1){ //atual < paiAtual
-                        paiAtual.setEsquerda(substituto);
-                    }
-                    
-                    else{
-                        paiAtual.setDireita(substituto);
-                    }
-
-                }
-                
-                else{ //se não tem paiAtual, então é a raiz
-                    this.raiz = substituto;
-                    paiSubstituto.setEsquerda(null);
-                    this.raiz.setDireita(paiSubstituto);
-                    this.raiz.setEsquerda(atual.getEsquerda());
-                }
-                
-                //removeu o elemento da árvore
-                if (substituto.getNum().compareTo(paiSubstituto.getNum()) == -1){ //substituto < paiSubstituto
-                    paiSubstituto.setEsquerda(null);
-                }
-                
-                else{
-                    paiSubstituto.setDireita(null);
-                }
-                
-            }
-            
-            else if (atual.getEsquerda() != null){ //tem filho só à esquerda
-
-                Elemento<TIPO> substituto = atual.getEsquerda();
-                Elemento<TIPO> paiSubstituto = atual;
-
-                while(substituto.getDireita() != null){
-                    paiSubstituto = substituto;
-                    substituto = substituto.getDireita();
-                }
-
-                if (paiAtual != null){
-
-                    if (atual.getNum().compareTo(paiAtual.getNum()) == -1){ //atual < paiAtual
-                        paiAtual.setEsquerda(substituto);
-                    }
-                    
-                    else{
-                        paiAtual.setDireita(substituto);
-                    }
-
-                }
-                
-                else{ //se for a raiz
-                    this.raiz = substituto;
-                }
-                
-                //removeu o elemento da árvore
-                if (substituto.getNum().compareTo(paiSubstituto.getNum()) == -1){ //substituto < paiSubstituto
-                    paiSubstituto.setEsquerda(null);
-                }
-                
-                else{
-                    paiSubstituto.setDireita(null);
-                }
-
-            }
-            
-            else{ //não tem filho
-
-                if (paiAtual != null){
-
-                    if (atual.getNum().compareTo(paiAtual.getNum()) == -1){ //atual < paiAtual
-                        paiAtual.setEsquerda(null);
-                    }
-                    
-                    else{
-                        paiAtual.setDireita(null);
-                    }
-
-                }
-                
-                else{ //é a raiz
-                    this.raiz = null;
-                }
-            }
-            
-            return true;
-        }
-        
-        else{
-            return false;
-        }        
     }
 
 }
