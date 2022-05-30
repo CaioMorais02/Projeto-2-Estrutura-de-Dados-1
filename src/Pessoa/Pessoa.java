@@ -4,15 +4,26 @@ public class Pessoa {
     
     private String nome;
     private int idade;
-    private ContaBancaria conta;
+    private int quarto;
+    public ContaBancaria conta;
 
-    public Pessoa(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
+    public Pessoa() {
+
+        this.conta = new ContaBancaria();
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public void setQuarto(int quarto)
+    {
+        this.quarto = quarto;
+    }
+
+    public int getQuarto()
+    {
+        return this.quarto;
     }
 
     public void setNome(String nome) {
@@ -33,11 +44,6 @@ public class Pessoa {
 
     public void setConta(ContaBancaria conta) {
         this.conta = conta;
-    }
-
-    public void criarConta(String agencia, String conta, String nome, int senha, double saldo){
-        ContaBancaria c = new ContaBancaria(agencia, conta, nome, senha, saldo);
-        setConta(c);
     }
 
     public void fazendoDeposito(double aumento){

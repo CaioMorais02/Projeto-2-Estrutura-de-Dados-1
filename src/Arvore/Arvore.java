@@ -1,9 +1,9 @@
 package Arvore;
 
 public class Arvore<TIPO extends Comparable> {
-    
-    private Elemento<TIPO> raiz;
 
+    private Elemento<TIPO> raiz;
+    
     public Arvore(){
         this.raiz = null;
     }
@@ -16,7 +16,7 @@ public class Arvore<TIPO extends Comparable> {
         this.raiz = raiz;
     }
 
-    public void adicionar(TIPO num, int valor){
+    public void adicionar(TIPO num, double valor){
         Elemento<TIPO> novoElemento = new Elemento<TIPO>(num, valor);
 
         if (raiz == null){ //Insere um valor caso a árvore esteja vazia
@@ -84,13 +84,40 @@ public class Arvore<TIPO extends Comparable> {
         }
     }
 
-    public void ocuparQuarto(TIPO num){
+    public int ocuparQuarto(TIPO num, double valor, boolean desocupar){
         Elemento<TIPO> atual = this.raiz;
 
-        while (true){
+        while (atual != null){
             if (atual.getNum().equals(num)){
-                atual.setOcupado(true);
-                break;
+                if(atual.getValor() <= valor)
+                {
+                    if(desocupar)
+                    {
+                        if(atual.isOcupado())
+                        {
+                            atual.setOcupado(false);
+                            return 4;//desocupando quarto
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                    else
+                    {
+                        if(!atual.isOcupado())
+                        {
+                            atual.setOcupado(true);
+                            return 1;//ocupou o quarto
+                        }
+                        else
+                        {
+                            return 2;//o quarto já está ocupado
+                        }
+                    }
+                    
+                }
+                return 3;
             }
 
             else if (num.compareTo(atual.getNum()) == -1){ //valor procurado é menor que o atual
@@ -101,7 +128,7 @@ public class Arvore<TIPO extends Comparable> {
                 atual = atual.getDireita();
             }
         }
-
+        return 0;//o quarto não existe
     }
 
 }

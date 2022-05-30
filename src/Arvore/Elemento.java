@@ -3,12 +3,12 @@ package Arvore;
 public class Elemento<TIPO> {
     
     private TIPO num;
-    private int valor;
+    private double valor;
     private boolean ocupado;
     private Elemento<TIPO> esquerda;
     private Elemento<TIPO> direita;
 
-    public Elemento(TIPO num, int valor) {
+    public Elemento(TIPO num, double valor) {
         this.num = num;
         this.valor = valor;
         this.ocupado = false;
@@ -24,7 +24,7 @@ public class Elemento<TIPO> {
         this.num = num;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
